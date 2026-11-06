@@ -1,0 +1,2 @@
+Arquivos JS verificados: 17
+Falhas de sintaxe: 0

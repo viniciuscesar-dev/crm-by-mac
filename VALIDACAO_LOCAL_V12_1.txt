@@ -1,0 +1,16 @@
+MAC ONE CRM — VALIDAÇÃO LOCAL V12.1
+Data: 2026-09-05
+
+Validações executadas:
+- Sintaxe de todas as Netlify Functions (.mjs): OK
+- Sintaxe do JavaScript inline do index.html: OK
+- Carregamento local do index.html via HTTP: OK
+- Carregamento local do assets/mac-one-logo.svg via HTTP: OK
+- Branding da tela de login: MAC ONE CRM
+- Logo: espaço visual entre MAC e ONE
+- Letra E: três barras horizontais
+- Referência antiga “CRM Revisão Contratual” no código principal: não encontrada
+- Migrations 001 a 011 presentes no pacote
+
+Observação importante:
+Esta validação é local/estática e de carregamento. A homologação de produção depende de publicar no Netlify, aplicar/validar as migrations no PostgreSQL e testar os fluxos reais de autenticação, permissões, propostas, campanhas e notificações.

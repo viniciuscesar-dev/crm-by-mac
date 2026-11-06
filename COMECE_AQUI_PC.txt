@@ -1,0 +1,28 @@
+CRM BY MAC — RETOMADA NO PC — 05/11/2026
+
+ESTE PACOTE USA COMO BASE CRM_BY_MAC_CONFIGURACAO_REVISADA.zip.
+NAO E UMA NOVA VERSAO VALIDADA EM PRODUCAO. O CODIGO ORIGINAL FOI PRESERVADO.
+
+ETAPA 1 — NEON (SEM RISCO DE ALTERAR DADOS)
+1. Acesse https://console.neon.tech e abra o projeto CRMbymac, branch production.
+2. Abra SQL Editor. Copie o conteudo de DIAGNOSTICO/01_VERIFICAR_NEON_SEM_ALTERAR.sql e clique Run.
+3. Envie APENAS o resultado (nomes de tabelas e colunas). Nao envie URL de conexao, senhas ou tokens.
+4. NAO execute NEON_SCHEMA_COMPLETO_001_A_012.sql agora. Ele foi preparado para banco vazio e pode conflitar com tabelas parciais existentes.
+
+ETAPA 2 — INSTALACAO LOCAL (APOS O DIAGNOSTICO)
+1. Extraia este ZIP em uma pasta nova.
+2. Abra a pasta no VS Code, Terminal > Novo Terminal (PowerShell).
+3. Execute: npm.cmd install
+4. Execute: npm.cmd run check
+5. Execute: npx.cmd wrangler deploy APENAS quando a estrutura do Neon e os secrets estiverem validados.
+
+ETAPA 3 — CLOUDFLARE
+No painel do Worker crm-by-mac, confira os NOMES dos secrets DATABASE_URL e PASSWORD_PEPPER (nao divulgue os valores).
+O Worker usa o nome crm-by-mac e pode sobrescrever a versao publicada se voce executar deploy.
+
+ETAPA 4 — PRIMEIRO LOGIN
+Com as tabelas corrigidas, testar primeiro a rota bootstrap-status e depois o login.
+Se ja houver usuarios, NAO refazer bootstrap nem recriar contas administrativas sem auditoria.
+
+IMPORTANTE
+O SQL de diagnostico nao altera nem apaga registros. Este pacote nao foi testado contra sua instancia Neon nem publicado na sua conta Cloudflare.

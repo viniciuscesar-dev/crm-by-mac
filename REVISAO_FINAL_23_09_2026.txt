@@ -1,0 +1,9 @@
+
+REVISAO FINAL 23-09-2026
+- Prévia interna reproduz proposta pública completa.
+- Amortização extraordinária independente do comparativo de amortização.
+- Total a pagar após correção e resumo financeiro para imóvel.
+- Status Aceita/Recusada prevalece sobre expiração na proposta pública.
+- Botões Aceitar/Recusar desativados nos cards após decisão.
+- Modalidade pública sincronizada com o tipo atual da análise.
+- bootstrap-creator removido do pacote final.

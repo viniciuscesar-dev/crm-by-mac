@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" role="img" aria-label="CM">
+  <rect width="220" height="220" rx="42" fill="#0A0A0A"/>
+  <g fill="none" stroke="#fff" stroke-width="11" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M70 56 H126 M70 56 C42 56 31 77 31 107 C31 137 45 158 70 158 H116"/>
+    <path d="M76 143 V80 L111 115 L146 80 V169"/>
+  </g>
+</svg>

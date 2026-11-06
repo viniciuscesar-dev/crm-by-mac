@@ -1,0 +1,25 @@
+CRM by mac — validação final de arquivos
+
+[OK] Título CRM by mac
+[OK] Logo principal referenciada
+[OK] Ícone compacto referenciado
+[OK] Logo antiga removida do HTML
+[OK] Nome MAC ONE removido do HTML
+[OK] SVG principal existe
+[OK] SVG compacto existe
+[OK] JavaScript principal sem erro de sintaxe
+[OK] Todas as funções .mjs sem erro de sintaxe
+[OK] Migration 001 presente
+[OK] Migration 002 presente
+[OK] Migration 003 presente
+[OK] Migration 004 presente
+[OK] Migration 005 presente
+[OK] Migration 006 presente
+[OK] Migration 007 presente
+[OK] Migration 008 presente
+[OK] Migration 009 presente
+[OK] Migration 010 presente
+[OK] Migration 011 presente
+
+RESULTADO LOCAL: APROVADO
+Observação: validação local não substitui teste do banco, variáveis de ambiente e fluxos no deploy real.

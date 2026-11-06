@@ -1,0 +1,9 @@
+import {db,json,body,auth,uid,requireSameOrigin,clientIp,legacyEvent} from './_db.mjs';
+import {hashPassword,hashIp} from './security.mjs';
+const audit=async(u,action,resource=null,id=null,e=null)=>{if(u)await db.sql`INSERT INTO audit_logs(company_id,user_id,action,resource,resource_id,ip_hash) VALUES(${u.company_id},${u.id},${action},${resource},${id},${e?hashIp(clientIp(e)):null})`};
+export default async req=>{const e=await legacyEvent(req);try{const u=await auth(e);if(!u||u.role!=='admin')return json({message:'Acesso restrito.'},403);const guard=requireSameOrigin(e);if(guard)return guard;const b=await body(e),a=b.action;
+ if(a==='team')return json(await db.sql`SELECT id,name,email,role,active,created_at FROM users WHERE company_id=${u.company_id} ORDER BY name`);
+ if(a==='create-consultant'){if(!b.name||!b.email||!b.password||String(b.password).length<12)return json({message:'Nome, e-mail e senha (12+ caracteres) são obrigatórios.'},400);const email=String(b.email).toLowerCase().trim();const [existing]=await db.sql`SELECT id FROM users WHERE email=${email}`;if(existing)return json({message:'E-mail já cadastrado.'},409);const [x]=await db.sql`INSERT INTO users(id,name,email,password_hash,role,company_id) VALUES(${uid()},${String(b.name).slice(0,120)},${email},${await hashPassword(b.password)},'consultant',${u.company_id}) RETURNING id,name,email,role,active`;await audit(u,'create_consultant','users',x.id,e);return json(x,201)}
+ if(a==='toggle-user'){if(!b.id)return json({message:'Usuário não informado.'},400);const [x]=await db.sql`UPDATE users SET active=NOT active WHERE id=${b.id} AND company_id=${u.company_id} AND id<>${u.id} RETURNING id,name,active`;if(x)await audit(u,'toggle_user','users',x.id,e);return json(x||{},200)}
+ return json({message:'Ação inválida.'},400)
+}catch(err){console.error(err);return json({message:'Erro interno.'},500)}};
